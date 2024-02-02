@@ -1,12 +1,10 @@
-<mat-card class="example-card " *ngFor="let card of card?.results">
+<mat-card class="example-card" *ngFor="let card of card?.results">
   <div class="flex flex-col">
     <img
       mat-card-image
       src="{{ card?.primaryImage?.url }}"
       alt="{{ card?.titleText?.text }}"
       class="w-full object-contain"
-      height="{{ card?.primaryImage?.height }}"
-      width="{{ card?.primaryImage?.width }}"
     />
 
     <mat-card-header>

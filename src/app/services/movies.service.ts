@@ -13,13 +13,17 @@ export class MoviesService implements OnInit {
 
   ngOnInit(): void {}
 
-  getAllMovies(): Observable<Movies> {
-    return this.http.get<Movies>(`${BASE_URL}/titles`, {
-      headers: {
-        Accept: 'application/json',
-        'X-RapidAPI-Key': '4b9d484babmshfd69ad9d88f81aap1357c3jsnaa7d77846c6c',
-        'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
-      },
-    });
+  getAllMovies(pageIndex?: number): Observable<Movies> {
+    return this.http.get<Movies>(
+      `${BASE_URL}/titles${pageIndex ? `/?page=${pageIndex}` : ''}`,
+      {
+        headers: {
+          Accept: 'application/json',
+          'X-RapidAPI-Key':
+            '4b9d484babmshfd69ad9d88f81aap1357c3jsnaa7d77846c6c',
+          'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
+        },
+      }
+    );
   }
 }

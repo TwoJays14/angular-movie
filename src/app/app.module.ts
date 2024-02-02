@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MovieCardComponent } from './pages/home/components/movie-card/movie-card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatInputModule,
     MatCardModule,
+    MatPaginatorModule,
     HttpClientModule
   ],
   providers: [provideAnimationsAsync()],
