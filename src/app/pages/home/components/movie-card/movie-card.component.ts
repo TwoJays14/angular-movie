@@ -7,5 +7,5 @@ import { Movie, Movies } from '../../../../models/movie.model';
   styleUrl: './movie-card.component.css',
 })
 export class MovieCardComponent {
-  @Input() card!: Movie[];
+  @Input() card!: Movies;
 }
