@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Movie, Movies } from '../models/movie.model';
+import { environment } from '../../environments/environment.development';
 
 const BASE_URL = 'https://moviesdatabase.p.rapidapi.com';
 
@@ -11,7 +12,15 @@ const BASE_URL = 'https://moviesdatabase.p.rapidapi.com';
 export class MoviesService implements OnInit {
   constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (environment.production) {
+      console.log('We are running in production mode');
+      console.log(`API Key: ${environment.apiKey}`);
+    } else {
+      console.log('We are running in development mode');
+      console.log(`API Key: ${environment.apiKey}`);
+    }
+  }
 
   getAllMovies(pageIndex?: number): Observable<Movies> {
     return this.http.get<Movies>(
@@ -19,8 +28,7 @@ export class MoviesService implements OnInit {
       {
         headers: {
           Accept: 'application/json',
-          'X-RapidAPI-Key':
-            '4b9d484babmshfd69ad9d88f81aap1357c3jsnaa7d77846c6c',
+          'X-RapidAPI-Key': `${environment['apiKey']}`,
           'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
         },
       }
