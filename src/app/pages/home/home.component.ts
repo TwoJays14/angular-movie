@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   toggleDrawer() {
     // Your additional logic here
     this.drawer.toggle();
-    this.toggleMargin = !this.toggleDrawer;
+    this.toggleMargin = !this.toggleMargin;
 
     // More logic after toggle, if needed
   }
