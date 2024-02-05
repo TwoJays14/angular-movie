@@ -1,4 +1,4 @@
-@for (card of card.results; track card._id) {
+@for (card of card?.results; track card._id) {
 <mat-card
   class="cursor-pointer"
   (mouseenter)="onMouseEnter(card._id)"
