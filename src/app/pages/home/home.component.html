@@ -1,20 +1,33 @@
-<div class="max-w-7xl mx-auto">
-  <app-movie-card
-    class="gap-2 justify-between grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-    [card]="card"
-  ></app-movie-card>
-  <mat-paginator
-    #paginator
-    [pageIndex]="pageIndex"
-    class="demo-paginator"
-    (page)="handlePageEvent($event)"
-    [length]="length"
-    [pageSize]="pageSize"
-    [disabled]="disabled"
-    [showFirstLastButtons]="showFirstLastButtons"
-    [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
-    [hidePageSize]="hidePageSize"
-    aria-label="Select page"
-  >
-  </mat-paginator>
-</div>
+<mat-drawer-container class="max-w-7xl mx-auto" autosize>
+  <mat-drawer class="px-2" #drawer mode="side">
+    <app-filters (genreChange)="newGenre($event)" [genreList]="genreList"></app-filters>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div class="pt-4">
+      <div class="pb-4 pl-2">
+        <button type="button" mat-raised-button (click)="toggleDrawer()">
+          Show Filters
+        </button>
+      </div>
+      <app-movie-card
+        class="gap-4 justify-between grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        [card]="card"
+      ></app-movie-card>
+      <mat-paginator
+        #paginator
+        [pageIndex]="pageIndex"
+        class="demo-paginator"
+        (page)="handlePageEvent($event)"
+        [length]="length"
+        [pageSize]="pageSize"
+        [disabled]="disabled"
+        [showFirstLastButtons]="showFirstLastButtons"
+        [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+        [hidePageSize]="hidePageSize"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

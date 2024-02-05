@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 import { Movie, Movies } from '../../../../models/movie.model';
 
 @Component({
@@ -9,9 +15,27 @@ import { Movie, Movies } from '../../../../models/movie.model';
 export class MovieCardComponent {
   @Input() card!: Movies;
   @Output() pageNumber = new EventEmitter<number>();
+  hoveredIndex: string | undefined;
 
+  // @HostListener('mouseenter') onMouseEnter() {
+  //   this.likeAndShare = true;
+  // }
+
+  // @HostListener('mouseleave') onMouseLeave() {
+  //   this.likeAndShare = false;
+  // }
+
+  onMouseEnter(index: string): void {
+    console.log('index: ' + index);
+
+    this.hoveredIndex = index;
+  }
+
+  onMouseLeave() {
+    this.hoveredIndex = undefined;
+  }
 
   page(index: number) {
-    this.pageNumber.emit(index)
+    this.pageNumber.emit(index);
   }
 }

@@ -6,3 +6,12 @@
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+
+.mat-card-actions {
+    height: 50px; /* Adjust as needed */
+    visibility: hidden;
+}
+
+.mat-card-actions.visible {
+    visibility: visible;
+}

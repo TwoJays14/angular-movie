@@ -1,30 +1,29 @@
-<mat-card class="example-card" *ngFor="let card of card?.results">
-  <div class="flex flex-col">
+@for (card of card.results; track card._id) {
+<mat-card
+  class="cursor-pointer"
+  (mouseenter)="onMouseEnter(card._id)"
+  (mouseleave)="onMouseLeave()"
+>
+  <div class="flex flex-col items-center h-[400px]">
     <img
       mat-card-image
-      src="{{ card?.primaryImage?.url }}"
+      [src]="card?.primaryImage?.url || 'https://via.placeholder.com/250'"
       alt="{{ card?.titleText?.text }}"
-      class="w-full object-contain"
+      class="w-full h-[250px] object-cover"
     />
 
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
+      <img mat-card-avatar >
       <mat-card-title>{{ card?.titleText?.text }}</mat-card-title>
       <mat-card-subtitle>{{ card?.titleType?.text }}</mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content>
-      <p class="py-2">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus
-        debitis nemo dolores adipisci maiores sit velit, in minima distinctio,
-        laborum fugit accusantium doloribus blanditiis omnis quidem molestiae
-        quas porro quo!
-      </p>
-    </mat-card-content>
-
+    @if (hoveredIndex === card?._id) {
     <mat-card-actions>
       <button class="px-2" mat-button>LIKE</button>
       <button mat-button>SHARE</button>
     </mat-card-actions>
+    }
   </div>
 </mat-card>
+}

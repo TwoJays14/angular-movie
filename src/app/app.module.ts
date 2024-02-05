@@ -4,6 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,11 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MovieCardComponent } from './pages/home/components/movie-card/movie-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FiltersComponent } from './pages/home/components/filters/filters.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -20,6 +26,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     HomeComponent,
     HeaderComponent,
     MovieCardComponent,
+    FiltersComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     MatCardModule,
     MatPaginatorModule,
-    HttpClientModule
+    MatExpansionModule,
+    MatListModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatButtonModule,
+    HttpClientModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

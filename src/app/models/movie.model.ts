@@ -2,6 +2,10 @@ export interface Movies {
   results: Movie[];
 }
 
+export interface Genres {
+  results: string[]
+}
+
 export interface Movie {
   _id: string;
   primaryImage: {
