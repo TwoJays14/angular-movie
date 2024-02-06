@@ -13,7 +13,7 @@ import { Movie, Movies } from '../../../../models/movie.model';
   styleUrl: './movie-card.component.css',
 })
 export class MovieCardComponent {
-  @Input() card!: Movies;
+  @Input() card: Movies | undefined;
   @Output() pageNumber = new EventEmitter<number>();
   hoveredIndex: string | undefined;
 
@@ -26,7 +26,7 @@ export class MovieCardComponent {
   // }
 
   onMouseEnter(index: string): void {
-    console.log('index: ' + index);
+    // console.log('index: ' + index);
 
     this.hoveredIndex = index;
   }

@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   toggleDrawer() {
     // Your additional logic here
     this.drawer.toggle();
-    this.toggleMargin = !this.toggleDrawer;
+    this.toggleMargin = !this.toggleMargin;
 
     // More logic after toggle, if needed
   }
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   newGenre(changedGenre: string) {
-    console.log('home component genre', changedGenre);
+    // console.log('home component genre', changedGenre);
     this.movieService.filterByGenre(changedGenre).subscribe((genre) => {
       this.card = genre;
     });
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.cardSubscription = this.movieService
       .getAllMovies()
       .subscribe((movies) => {
-        console.log(movies);
+        // console.log(movies);
         this.card = movies;
         console.log(this.card);
       });
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.genreSubscription = this.movieService
       .getMovieGenres()
       .subscribe((genres) => {
-        console.log(genres);
+        // console.log(genres);
         this.genreList = genres;
       });
   }

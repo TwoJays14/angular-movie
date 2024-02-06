@@ -1,13 +1,16 @@
 <mat-drawer-container class="max-w-7xl mx-auto" autosize>
   <mat-drawer class="px-2" #drawer mode="side">
-    <app-filters (genreChange)="newGenre($event)" [genreList]="genreList"></app-filters>
+    <app-filters
+      (genreChange)="newGenre($event)"
+      [genreList]="genreList"
+    ></app-filters>
   </mat-drawer>
 
   <mat-drawer-content>
     <div class="pt-4">
       <div class="pb-4 pl-2">
         <button type="button" mat-raised-button (click)="toggleDrawer()">
-          Show Filters
+         {{toggleMargin ? "Hide" : "Show"}} Filters
         </button>
       </div>
       <app-movie-card

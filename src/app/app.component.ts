@@ -9,6 +9,6 @@ export class AppComponent {
   title = 'Movie App';
 
   changeSideNav(value: boolean) {
-    console.log('value', value);
+    // console.log('value', value);
   }
 }

@@ -12,6 +12,6 @@ export class HeaderComponent {
   changeSidenav(filler: boolean) {
     this.showFiller = !this.showFiller;
     this.toggle.emit(filler);
-    console.log(filler);
+    // console.log(filler);
   }
 }
