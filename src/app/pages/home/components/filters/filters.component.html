@@ -8,21 +8,5 @@
         }
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
-      <mat-label class="uppercase">Genres</mat-label>
-      <mat-select (selectionChange)="onGenreChange($event.value)">
-        @for (genre of genreList?.results; track genre) {
-        <mat-option [value]="genre">{{ genre }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label class="uppercase">Genres</mat-label>
-      <mat-select (selectionChange)="onGenreChange($event.value)">
-        @for (genre of genreList?.results; track genre) {
-        <mat-option [value]="genre">{{ genre }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
   </div>
 </mat-card>

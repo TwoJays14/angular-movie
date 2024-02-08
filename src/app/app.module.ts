@@ -19,6 +19,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSidenavModule,
     MatButtonModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

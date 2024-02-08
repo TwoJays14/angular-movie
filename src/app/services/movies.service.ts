@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Genres, Movie, Movies } from '../models/movie.model';
 import { environment } from '../../environments/environment.development';
 
-const BASE_URL = 'https://moviesdatabase.p.rapidapi.com';
+export const BASE_URL = 'https://moviesdatabase.p.rapidapi.com';
 
 @Injectable({
   providedIn: 'root',
@@ -53,5 +53,22 @@ export class MoviesService implements OnInit {
         'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
       },
     });
+  }
+
+  searchMovie(searchValue: string): Observable<any> {
+    const result = this.http.get<any>(
+      `${BASE_URL}/titles/search/title/${searchValue}?exact=false`,
+      {
+        headers: {
+          Accept: 'application/json',
+          'X-RapidAPI-Key': `${environment['apiKey']}`,
+          'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
+        },
+      }
+    );
+
+    console.log(searchValue);
+    console.log(result);
+    return result;
   }
 }

@@ -1,4 +1,4 @@
-<mat-drawer-container class="max-w-7xl mx-auto" autosize>
+<mat-drawer-container class="max-w-[1500px] mx-auto px-4" autosize>
   <mat-drawer class="px-2" #drawer mode="side">
     <app-filters
       (genreChange)="newGenre($event)"
@@ -7,14 +7,14 @@
   </mat-drawer>
 
   <mat-drawer-content>
-    <div class="pt-4">
+    <div class="pt-4 ">
       <div class="pb-4 pl-2">
         <button type="button" mat-raised-button (click)="toggleDrawer()">
          {{toggleMargin ? "Hide" : "Show"}} Filters
         </button>
       </div>
       <app-movie-card
-        class="gap-4 justify-between grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        class="gap-2 justify-between grid sm:grid-cols-3 sm:grid-rows-3 lg:grid-cols-4"
         [card]="card"
       ></app-movie-card>
       <mat-paginator

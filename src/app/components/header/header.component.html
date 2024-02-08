@@ -10,13 +10,31 @@
   </button>
   <span>Movie App</span>
   <span class="example-spacer"></span>
-  <div class="flex items-center relative">
+
+  <form
+    #searchForm="ngForm"
+    (ngSubmit)="performSearch()"
+    class="flex items-center relative"
+  >
     <input
+      [(ngModel)]="searchValue"
       class="pl-2 rounded-sm text-indigo-600"
       matInput
       type="text"
+      name="search"
+      id="search"
       placeholder="Search for a movie"
     />
-    <mat-icon color="primary" class="absolute -right-[-4px]">search</mat-icon>
-  </div>
+    <button
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="clearSearch()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <button type="submit" matSuffix mat-icon-button aria-label="Search">
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
 </mat-toolbar>

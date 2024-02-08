@@ -4,6 +4,7 @@ import { MoviesService } from '../../services/movies.service';
 import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 import { MatDrawer } from '@angular/material/sidenav';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +15,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('drawer') drawer!: MatDrawer;
   card!: Movies;
   genreList!: Genres;
-  cardSubscription: Subscription | undefined;
-  genreSubscription: Subscription | undefined;
+  private sharedSubscription: Subscription | undefined;
+  private cardSubscription: Subscription | undefined;
+  private genreSubscription: Subscription | undefined;
   length = 1000;
   pageSize = 10;
   pageIndex = 1;
@@ -57,7 +59,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  constructor(private movieService: MoviesService) {}
+  constructor(
+    private movieService: MoviesService,
+    private sharedService: SharedService
+  ) {}
   ngOnInit(): void {
     this.cardSubscription = this.movieService
       .getAllMovies()
@@ -73,6 +78,14 @@ export class HomeComponent implements OnInit, OnDestroy {
         // console.log(genres);
         this.genreList = genres;
       });
+
+    this.sharedSubscription = this.sharedService.changeEmitted$.subscribe(
+      (data) => {
+        this.movieService.searchMovie(data).subscribe((searchResult) => {
+          this.card = searchResult;
+        });
+      }
+    );
   }
 
   ngOnDestroy(): void {
@@ -82,6 +95,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     if (this.genreSubscription) {
       this.genreSubscription.unsubscribe();
+    }
+
+    if (this.sharedSubscription) {
+      this.sharedSubscription.unsubscribe();
     }
   }
 }

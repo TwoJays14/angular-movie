@@ -1,11 +1,10 @@
 import {
   Component,
   EventEmitter,
-  HostListener,
   Input,
   Output,
 } from '@angular/core';
-import { Movie, Movies } from '../../../../models/movie.model';
+import {  Movies } from '../../../../models/movie.model';
 
 @Component({
   selector: 'app-movie-card',

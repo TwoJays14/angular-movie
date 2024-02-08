@@ -7,11 +7,11 @@
   background-size: cover;
 }
 
-.mat-card-actions {
-    height: 50px; /* Adjust as needed */
+/* .mat-card-actions {
+    height: 50px; 
     visibility: hidden;
-}
+} */
 
-.mat-card-actions.visible {
+/* .mat-card-actions.visible {
     visibility: visible;
-}
+} */
