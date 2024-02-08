@@ -47,9 +47,9 @@ export class MoviesService implements OnInit {
     });
   }
 
-  filterByGenre(genre: string): Observable<Movies> {
+  filterByGenre(genre: string, pageIndex = 1): Observable<Movies> {
     return this.http.get<Movies>(
-      `${BASE_URL}/titles?genre=${genre}&startYear=2000&limit=50`,
+      `${BASE_URL}/titles?genre=${genre}&startYear=2000&limit=50&page=${pageIndex}`,
       {
         headers: {
           Accept: 'application/json',
@@ -60,9 +60,9 @@ export class MoviesService implements OnInit {
     );
   }
 
-  searchMovie(searchValue: string): Observable<any> {
+  searchMovie(searchValue: string, pageIndex = 1): Observable<any> {
     const result = this.http.get<any>(
-      `${BASE_URL}/titles/search/title/${searchValue}?exact=false&limit=50`,
+      `${BASE_URL}/titles/search/title/${searchValue}?exact=false&limit=50&page=${pageIndex}`,
       {
         headers: {
           Accept: 'application/json',

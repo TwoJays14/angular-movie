@@ -5,36 +5,19 @@
     aria-label="Example icon-button with menu icon"
     class="flex"
     (click)="changeSidenav(!showFiller)"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
+  ></button>
   <span>Movie App</span>
   <span class="example-spacer"></span>
 
   <!-- (ngSubmit)="performSearch()" -->
   <!-- [(ngModel)]="searchValue" -->
-  <form
-  #searchForm="ngForm"
-    class="flex items-center relative"
-  >
-    <input
-      [formControl]="searchControl"
-      class="pl-2 rounded-sm text-indigo-600"
-      matInput
-      type="text"
-      name="search"
-      id="search"
-      placeholder="Search for a movie"
-    />
-    <button
-      matSuffix
-      mat-icon-button
-      aria-label="Clear"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-    <button type="submit" matSuffix mat-icon-button aria-label="Search">
-      <mat-icon>search</mat-icon>
-    </button>
-  </form>
+  <input
+    [formControl]="searchControl"
+    class="pl-2 rounded-sm text-indigo-600"
+    matInput
+    type="text"
+    name="search"
+    id="search"
+    placeholder="Search for a movie"
+  />
 </mat-toolbar>

@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   private sharedSubscription: Subscription | undefined;
   private cardSubscription: Subscription | undefined;
   private genreSubscription: Subscription | undefined;
+  currentGenre: string | null = null;
+  currentSearch: string | null = null;
+
   length = 1000;
   pageSize = 10;
   pageIndex = 1;
@@ -47,10 +50,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
 
+    if (this.currentSearch) {
+    this.movieService.searchMovie(this.currentSearch, this.pageIndex).subscribe((movies) => {
+      this.card = movies;
+    });
+  } else if (this.currentGenre) {
+    this.movieService.filterByGenre(this.currentGenre, this.pageIndex).subscribe((movies) => {
+      this.card = movies;
+    });
+  } else {
     this.movieService.getAllMovies(this.pageIndex).subscribe((movies) => {
       this.card = movies;
     });
-  }
+  }}
 
   newGenre(changedGenre: string) {
     // console.log('home component genre', changedGenre);

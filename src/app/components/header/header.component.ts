@@ -12,6 +12,7 @@ export class HeaderComponent {
   @Output() toggle = new EventEmitter<boolean>();
   @Output() showFiller: boolean = false;
   searchControl: FormControl = new FormControl('');
+  
 
   constructor(private sharedService: SharedService) {
     this.searchControl.valueChanges
@@ -21,7 +22,6 @@ export class HeaderComponent {
       });
   }
 
-
   changeSidenav(filler: boolean) {
     this.showFiller = !this.showFiller;
     this.toggle.emit(filler);
@@ -29,11 +29,8 @@ export class HeaderComponent {
   }
 
   performSearch(query: string) {
-  
     if (query) {
       this.sharedService.emitChange(query);
-     
     }
-
   }
 }
