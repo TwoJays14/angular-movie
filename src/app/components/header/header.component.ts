@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { SharedService } from '../../services/shared.service';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,13 +11,16 @@ import { SharedService } from '../../services/shared.service';
 export class HeaderComponent {
   @Output() toggle = new EventEmitter<boolean>();
   @Output() showFiller: boolean = false;
-  searchValue: string | undefined;
+  searchControl: FormControl = new FormControl('');
 
-  constructor(private sharedService: SharedService) {}
-
-  clearSearch() {
-    this.searchValue = '';
+  constructor(private sharedService: SharedService) {
+    this.searchControl.valueChanges
+      .pipe(debounceTime(200), distinctUntilChanged())
+      .subscribe((model) => {
+        this.performSearch(model);
+      });
   }
+
 
   changeSidenav(filler: boolean) {
     this.showFiller = !this.showFiller;
@@ -24,13 +28,12 @@ export class HeaderComponent {
     // console.log(filler);
   }
 
-  performSearch() {
-    const query = this.searchValue;
+  performSearch(query: string) {
+  
     if (query) {
       this.sharedService.emitChange(query);
-      this.searchValue = '';
+     
     }
 
-    // Implement your search logic here
   }
 }

@@ -3,7 +3,7 @@ export interface Movies {
 }
 
 export interface Genres {
-  results: string[]
+  results: string[];
 }
 
 export interface Movie {

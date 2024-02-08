@@ -24,7 +24,9 @@ export class MoviesService implements OnInit {
 
   getAllMovies(pageIndex?: number): Observable<Movies> {
     return this.http.get<Movies>(
-      `${BASE_URL}/titles${pageIndex ? `/?page=${pageIndex}` : ''}`,
+      `${BASE_URL}/titles?startYear=2000&limit=50${
+        pageIndex ? `&page=${pageIndex}` : ''
+      }`,
       {
         headers: {
           Accept: 'application/json',
@@ -46,18 +48,21 @@ export class MoviesService implements OnInit {
   }
 
   filterByGenre(genre: string): Observable<Movies> {
-    return this.http.get<Movies>(`${BASE_URL}/titles/?genre=${genre}`, {
-      headers: {
-        Accept: 'application/json',
-        'X-RapidAPI-Key': `${environment['apiKey']}`,
-        'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
-      },
-    });
+    return this.http.get<Movies>(
+      `${BASE_URL}/titles?genre=${genre}&startYear=2000&limit=50`,
+      {
+        headers: {
+          Accept: 'application/json',
+          'X-RapidAPI-Key': `${environment['apiKey']}`,
+          'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
+        },
+      }
+    );
   }
 
   searchMovie(searchValue: string): Observable<any> {
     const result = this.http.get<any>(
-      `${BASE_URL}/titles/search/title/${searchValue}?exact=false`,
+      `${BASE_URL}/titles/search/title/${searchValue}?exact=false&limit=50`,
       {
         headers: {
           Accept: 'application/json',

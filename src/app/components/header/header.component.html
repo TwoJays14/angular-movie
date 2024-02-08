@@ -11,13 +11,14 @@
   <span>Movie App</span>
   <span class="example-spacer"></span>
 
+  <!-- (ngSubmit)="performSearch()" -->
+  <!-- [(ngModel)]="searchValue" -->
   <form
-    #searchForm="ngForm"
-    (ngSubmit)="performSearch()"
+  #searchForm="ngForm"
     class="flex items-center relative"
   >
     <input
-      [(ngModel)]="searchValue"
+      [formControl]="searchControl"
       class="pl-2 rounded-sm text-indigo-600"
       matInput
       type="text"
@@ -29,7 +30,6 @@
       matSuffix
       mat-icon-button
       aria-label="Clear"
-      (click)="clearSearch()"
     >
       <mat-icon>close</mat-icon>
     </button>
